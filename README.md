@@ -2,11 +2,11 @@
 **Contributors:** greatislander  
 **Donate link:** https://pressbooks.org/donate/  
 **Tags:** pressbooks, plugin, scaffolding  
-**Requires at least:** 4.9  
-**Tested up to:** 4.9  
+**Requires at least:** 4.9.5  
+**Tested up to:** 4.9.5  
 **Stable tag:** 0.1.0  
-**License:** GPLv2 or later  
-**License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
+**License:** GPLv3 or later  
+**License URI:** https://www.gnu.org/licenses/gpl-3.0.html  
 
 Scaffolding for a Pressbooks plugin.
 

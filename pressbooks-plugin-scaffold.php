@@ -7,7 +7,7 @@ Version: 0.1.0
 Author: Pressbooks (Book Oven Inc.)
 Author URI: https://pressbooks.org
 Text Domain: pressbooks-plugin-scaffold
-License: GPLv2
+License: GPL v3 or later
 Network: True
 */
 
