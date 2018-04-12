@@ -3,9 +3,11 @@
 Plugin Name: Pressbooks Plugin Scaffold
 Plugin URI: https://pressbooks.org
 Description: Scaffolding for a Pressbooks plugin.
-Version: 0.1.0
+Version: 0.2.0
 Author: Pressbooks (Book Oven Inc.)
 Author URI: https://pressbooks.org
+Requires PHP: 7.0
+Pressbooks tested up to: 5.2.1
 Text Domain: pressbooks-plugin-scaffold
 License: GPL v3 or later
 Network: True
