@@ -11,9 +11,10 @@ branches:
 php:
 - 7.0.8
 - 7.1
+- 7.2
 - nightly
 env:
-- WP_VERSION=latest WP_MULTISITE=1 TRAVIS_NODE_VERSION="6"
+- WP_VERSION=latest WP_MULTISITE=1 TRAVIS_NODE_VERSION="8"
 matrix:
   fast_finish: true
   allow_failures:
@@ -31,23 +32,27 @@ install:
 - npm install -g yarn
 - yarn
 - composer install
+- ulimit -n 4096
 before_script:
+- if php -v | grep -q 'Xdebug'; then phpenv config-rm xdebug.ini; fi
 - bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
 script:
 - yarn run lint
 - yarn run production
-- vendor/bin/phpunit --configuration phpunit.xml --coverage-clover coverage.xml
+- if [[ ${TRAVIS_PHP_VERSION:0:3} == "7.1" ]]; then phpdbg -qrr -d memory_limit=-1 vendor/bin/phpunit --configuration phpunit.xml --coverage-clover coverage.xml; fi
+- if [[ ${TRAVIS_PHP_VERSION:0:3} != "7.1" ]]; then vendor/bin/phpunit --configuration phpunit.xml; fi
 - vendor/bin/phpcs --standard=phpcs.ruleset.xml *.php inc/ bin/
 after_success:
 - bash <(curl -s https://codecov.io/bash)
 # before_deploy:
 # - export TRAVIS_PROJECT_SLUG="$(basename $TRAVIS_BUILD_DIR)"
+# - curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+# - chmod +x wp-cli.phar
+# - sudo mv wp-cli.phar /usr/local/bin/wp
+# - wp package install wp-cli/dist-archive-command
 # - composer install --no-dev --optimize-autoloader
 # - cd ../
-# - zip -9 -ry $TRAVIS_BUILD_DIR/$TRAVIS_PROJECT_SLUG-$TRAVIS_TAG.zip $TRAVIS_PROJECT_SLUG
-#   -x *.git* *assets/\* *bin/\* *node_modules/\* *tests/\* *.editorconfig* *.gitattributes*
-#   *.github* *.gitignore* *.phpstorm.meta.php* *.travis.yml* *.tx* *phpcs.ruleset.xml*
-#   *phpunit.xml* *webpack.mix.js* *yarn.lock*
+# - wp dist-archive $TRAVIS_PROJECT_SLUG $TRAVIS_BUILD_DIR/$TRAVIS_PROJECT_SLUG-$TRAVIS_TAG.zip
 # - cd $TRAVIS_BUILD_DIR
 # deploy:
 #   provider: releases
