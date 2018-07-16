@@ -30,7 +30,8 @@
 	},
 	"require-dev": {
 		"pressbooks/coding-standards": "dev-master",
-		"wpreadme2markdown/wp2md": "^3.0"
+		"wpreadme2markdown/wp2md": "^3.0",
+		"phpunit/phpunit": "~6.5"
 	},
 	"scripts": {
 		"test": [
