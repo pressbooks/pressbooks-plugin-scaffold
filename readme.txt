@@ -19,15 +19,17 @@ This is not a plugin, but a tool that helps you scaffold a plugin.
 
 Run `composer create-project pressbooks/pressbooks-plugin-scaffold <your-plugin-slug>`.
 
-Run `npm install` to install dependencies.
-
 Uncomment lines 34-43 of `pressbooks-plugin-scaffold.php` to enable Composer autoloader (you'll need to require a class to test for first).
 
-Replace `pressbooks/pressbooks-plugin-slug` with `<your-github-username>/<your-plugin-slug>` throughout the project.
+Replace `pressbooks/pressbooks-plugin-scaffold` with `<your-github-username>/<your-plugin-slug>` throughout the project.
 
-Replace `pressbooks-plugin-slug` with `<your-plugin-slug>` throughout the project (renaming files as needed).
+Replace `pressbooks-plugin-scaffold` with `<your-plugin-slug>` throughout the project (renaming files as needed).
 
 Replace `PressbooksPluginScaffold` with `<YourNamespace>` throughout the project.
+
+Run `npm install` to install dependencies.
+
+Update readme.txt to reflect your plugin's name and description and run `composer readme` to generate an updated readme.md file.
 
 === Optional Steps ===
 
