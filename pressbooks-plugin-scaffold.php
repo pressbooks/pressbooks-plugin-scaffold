@@ -54,5 +54,5 @@ if ( ! \Pressbooks\Book::isBook() ) {
 		'pressbooks-plugin-scaffold',
 		24
 	);
-	$updater->setBranch( 'master' );
+	$updater->setBranch( 'main' );
 }
