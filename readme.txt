@@ -1,6 +1,5 @@
 === Pressbooks Plugin Scaffold ===
-Contributors: conner_bw, greatislander
-Donate link: https://pressbooks.org/donate/
+Contributors: conner_bw, greatislander, steelwagstaff
 Tags: pressbooks, plugin, scaffolding
 Requires at least: 5.9.3
 Tested up to: 5.9.3
