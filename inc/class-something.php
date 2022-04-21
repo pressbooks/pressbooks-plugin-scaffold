@@ -1,7 +1,13 @@
 <?php
+/**
+ * Example file doc comment which should be replaced with your own comment.
+ */
 
-namespace PressbooksPluginScaffold;
+namespace PressbooksOAuth2;
 
+/**
+ * Example class which should be replaced with your own class.
+ */
 class Something {
 	/**
 	 * Constructor.
