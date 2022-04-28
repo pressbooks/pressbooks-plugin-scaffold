@@ -20,27 +20,36 @@
 	},
 	"config": {
 		"platform": {
-			"php": "7.0.29"
+			"php": "7.4"
+		},
+		"allow-plugins": {
+			"composer/installers": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true
 		}
 	},
 	"require": {
-		"php": ">=7.0",
-		"composer/installers": "~1.4",
-		"yahnis-elsts/plugin-update-checker": "^4.4"
+		"php": ">=7.4",
+		"composer/installers": "^2.0"
 	},
 	"require-dev": {
 		"pressbooks/coding-standards": "dev-master",
-		"wpreadme2markdown/wp2md": "^3.0",
-		"phpunit/phpunit": "~6.5"
+		"wpreadme2markdown/wp2md": "^4.0",
+    "yoast/phpunit-polyfills": "^1.0.1"
 	},
 	"scripts": {
 		"test": [
+      "vendor/bin/phpunit --configuration phpunit.xml --coverage-clover coverage.xml"
+    ],
+    "test-standards": [
 			"vendor/bin/phpunit --configuration phpunit.xml --coverage-clover coverage.xml",
 			"@standards"
 		],
 		"standards": [
 			"vendor/bin/phpcs --standard=phpcs.ruleset.xml *.php inc/ bin/"
 		],
+    "fix": [
+      "vendor/bin/phpcbf --standard=phpcs.ruleset.xml *.php inc/ bin/"
+    ],
 		"localize": [
 			"wp-pot -s \"**/*.php\" -o languages/pressbooks-plugin-scaffold.pot -p \"Pressbooks\" -t \"Pressbooks (Book Oven Inc.) <code@pressbooks.com>\"",
 			"bash bin/i18n.sh"
