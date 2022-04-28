@@ -51,9 +51,9 @@ Configure Transifex project and localization (instructions to come).
 
 ### 0.4.0
 
-## Upgrade Notice
-
+#### Upgrade Notice
 Pressbooks Plugin Scaffold 0.4.0 requires PHP 7.4, Pressbooks >= 5.34.0, and WordPress >= 5.9.3.
+
 **Major Changes**
 - Add support for Composer 2
 - Add GitHub Actions for linting and testing
