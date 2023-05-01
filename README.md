@@ -2,9 +2,9 @@
 
 **Contributors:** conner_bw, greatislander, steelwagstaff \
 **Tags:** pressbooks, plugin, scaffolding \
-**Requires at least:** 5.9.3 \
-**Tested up to:** 5.9.3 \
-**Stable tag:** 0.4.0 \
+**Requires at least:** 6.2 \
+**Tested up to:** 6.2 \
+**Stable tag:** 0.5.0-dev \
 **License:** GPLv3 or later \
 **License URI:** https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -49,11 +49,11 @@ Configure Transifex project and localization (instructions to come).
 
 ## Changelog
 
-### 0.4.0
-
+### 0.5.0
 #### Upgrade Notice
-Pressbooks Plugin Scaffold 0.4.0 requires PHP 7.4, Pressbooks >= 5.34.0, and WordPress >= 5.9.3.
+Pressbooks Plugin Scaffold 0.5.0 requires PHP 8.1, Pressbooks >= 6.9.3, and WordPress >= 6.2.
 
+### 0.4.0
 **Major Changes**
 - Add support for Composer 2
 - Add GitHub Actions for linting and testing
