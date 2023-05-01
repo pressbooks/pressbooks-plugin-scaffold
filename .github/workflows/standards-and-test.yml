@@ -1,7 +1,7 @@
 name: Run Standards & Tests
 on:
   push:
-    branches: [ dev ]
+    branches: [ dev, production ]
     tags:
       - '*.*.*'
   pull_request:
@@ -16,7 +16,6 @@ jobs:
         php: [ 8.1, 8.2 ]
         os: [ ubuntu-20.04 ]
         wordpress: [ 6.2, latest ]
-        experimental: [ false ]
         include:
           - experimental: true
           - experimental: false
