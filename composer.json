@@ -31,7 +31,7 @@
 	"require-dev": {
     "phpcompatibility/php-compatibility": "^9.3",
 		"pressbooks/coding-standards": "dev-dev",
-    "yoast/phpunit-polyfills": "^1.0.5"
+    "yoast/phpunit-polyfills": "^2.0.0"
 	},
 	"scripts": {
 		"test": [
