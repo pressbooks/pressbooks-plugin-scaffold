@@ -2,6 +2,8 @@
 
 namespace PressbooksPluginScaffold;
 
+use Pressbooks\Container;
+
 /**
  * Class Bootstrap
  * @package PressbooksPluginScaffold
