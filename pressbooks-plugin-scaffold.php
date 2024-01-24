@@ -2,61 +2,35 @@
 /**
  * Plugin Name: Pressbooks Plugin Scaffold
  * Plugin URI: https://pressbooks.org
- * Description: Scaffolding for a Pressbooks plugin.
- * Version: 0.5.0-dev
+ * Description: A scaffold for Pressbooks plugins.
+ * Version: 0.0.1
  * Author: Pressbooks (Book Oven Inc.)
  * Author URI: https://pressbooks.org
  * Requires PHP: 8.1
- * Pressbooks tested up to: 6.9.3
+ * Pressbooks tested up to: 6.16.0
  * Text Domain: pressbooks-plugin-scaffold
  * License: GPL v3 or later
  * Network: True
  */
 
-// -------------------------------------------------------------------------------------------------------------------
-// Check requirements
-// -------------------------------------------------------------------------------------------------------------------
-if ( ! function_exists( 'pb_meets_minimum_requirements' ) && ! @include_once( WP_PLUGIN_DIR . '/pressbooks/compatibility.php' ) ) { // @codingStandardsIgnoreLine
-	add_action('admin_notices', function () {
-		echo '<div id="message" class="error fade"><p>' . esc_html__( 'Cannot find Pressbooks install.', 'pressbooks-plugin-scaffold' ) . '</p></div>';
-	});
-	return;
-} elseif ( ! pb_meets_minimum_requirements() ) {
-	return;
+use PressbooksPluginScaffold\Bootstrap;
+use PressbooksPluginScaffold\Database\Migration;
+
+// TODO: Check if this is the best way to check for Pressbooks.
+if (!class_exists('Pressbooks\Book')) {
+    if (file_exists(__DIR__.'/vendor/autoload.php')) {
+        require_once __DIR__.'/vendor/autoload.php';
+    } else {
+        $title = __('Missing dependencies', 'PressbooksPluginScaffold');
+        $body = __(
+            'Please run <code>composer install</code> from the root of the plugin directory.',
+            'pressbooks-plugin-scaffold'
+        );
+
+        wp_die("<h1>{$title}</h1><p>{$body}</p>");
+    }
 }
 
-// -------------------------------------------------------------------------------------------------------------------
-// Class autoloader
-// -------------------------------------------------------------------------------------------------------------------
-\HM\Autoloader\register_class_path( 'PressbooksPluginScaffold', __DIR__ . '/inc' );
+register_activation_hook(__FILE__, [Migration::class, 'migrate']);
 
-// -------------------------------------------------------------------------------------------------------------------
-// Composer autoloader
-// -------------------------------------------------------------------------------------------------------------------
-
-/*
-Uncomment this section and remove this line after installation
-if ( ! class_exists( '\SomeRequiredClass' ) ) {
-	if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
-		require_once __DIR__ . '/vendor/autoload.php';
-	} else {
-		$title = __( 'Dependencies Missing', 'pressbooks-plugin-scaffold' );
-		$body = __( 'Please run <code>composer install</code> from the root of the Pressbooks Plugin Scaffold plugin directory.', 'pressbooks-plugin-scaffold' );
-		$message = "<h1>{$title}</h1><p>{$body}</p>";
-		wp_die( $message, $title );
-	}
-}
-*/
-
-// -------------------------------------------------------------------------------------------------------------------
-// Check for updates
-// -------------------------------------------------------------------------------------------------------------------
-if ( ! \Pressbooks\Book::isBook() ) {
-	$updater = new \Puc_v4p2_Vcs_PluginUpdateChecker(
-		new \Pressbooks\Updater( 'https://github.com/pressbooks/pressbooks-plugin-scaffold/' ),
-		__FILE__, // Fully qualified path to the main plugin file.
-		'pressbooks-plugin-scaffold',
-		24
-	);
-	$updater->setBranch( 'main' );
-}
+add_action('plugins_loaded', [Bootstrap::class, 'run']);

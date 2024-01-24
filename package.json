@@ -1,37 +1,29 @@
 {
-  "name": "@pressbooks/pressbooks-plugin-scaffold",
-  "description": "Scaffolding for a Pressbooks plugin.",
+  "name": "pressbooks-plugin-scaffold",
+  "version": "1.0.0",
+  "description": "",
+  "main": "resources/assets/js/app.js",
   "scripts": {
-    "watch": "mix watch",
-    "build": "npm run production",
-    "production": "mix --production",
-    "test": "npm run -s lint",
-    "lint": "npm run -s lint:scripts && npm run -s lint:styles",
-    "lint:scripts": "eslint \"assets/src/scripts/*.js\"",
-    "lint:styles": "stylelint \"assets/src/styles/**/*.scss\" --syntax scss",
-    "lint:fix-scripts": "eslint \"assets/src/scripts/*.js\" --fix"
-  },
-  "engines": {
-    "node": ">= 18"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "pressbooks-build-tools": "^4.0.0"
+    "build": "vite build",
+    "dev": "vite"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pressbooks/pressbooks-plugin-scaffold.git"
+    "url": "git+ssh://git@github.com/pressbooks/pressbooks-plugin-scaffold.git"
   },
-  "author": "Book Oven Inc. <code@pressbooks.com>",
+  "keywords": [
+    "wordpress-plugin"
+  ],
+  "author": "Pressbooks (Book Oven Inc.)",
   "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/pressbooks/pressbooks-plugin-scaffold/issues"
   },
-  "homepage": "https://github.com/pressbooks/pressbooks-plugin-scaffold/",
-  "eslintConfig": {
-    "extends": "./node_modules/pressbooks-build-tools/config/eslint.js"
-  },
-  "stylelint": {
-    "extends": "./node_modules/pressbooks-build-tools/config/stylelint.js"
+  "homepage": "https://github.com/pressbooks/pressbooks-plugin-scaffold#readme",
+  "devDependencies": {
+    "@kucrut/vite-for-wp": "^0.5.2",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.52.0",
+    "sass": "^1.69.5"
   }
 }

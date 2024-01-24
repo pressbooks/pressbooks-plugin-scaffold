@@ -2,8 +2,8 @@
 	"name": "pressbooks/pressbooks-plugin-scaffold",
 	"license": "GPL-3.0-or-later",
 	"type": "wordpress-plugin",
-	"description": "Scaffolding for a Pressbooks plugin.",
-	"homepage": "https://github.com/pressbooks/pressbooks-plugin-scaffold",
+	"description": "A scaffold for Pressbooks plugins.",
+	"homepage": "https://github.com/pressbooks/%PLUGIN_SLUG%",
 	"authors": [
 		{
 			"name": "Book Oven Inc.",
@@ -24,13 +24,23 @@
 			"dealerdirect/phpcodesniffer-composer-installer": true
 		}
 	},
+  "autoload": {
+    "psr-4": {
+      "PressbooksPluginScaffold\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
 	"require": {
-		"php": ">=8.1",
-		"composer/installers": "^2.2"
-	},
+    "php": "^8.1",
+    "kucrut/vite-for-wp": "^0.5.2",
+    "illuminate/pagination": "^8.83"
+  },
 	"require-dev": {
-    "phpcompatibility/php-compatibility": "^9.3",
-		"pressbooks/coding-standards": "dev-dev",
+    "laravel/pint": "^1.10.6",
     "yoast/phpunit-polyfills": "^1.0.5"
 	},
 	"scripts": {
@@ -40,15 +50,11 @@
     "test-coverage": [
       "vendor/bin/phpunit --configuration phpunit.xml --coverage-clover coverage.xml"
     ],
-    "standards": [
-      "vendor/bin/phpcs --standard=phpcs.ruleset.xml *.php inc/ bin/"
-		],
     "fix": [
-      "vendor/bin/phpcbf --standard=phpcs.ruleset.xml *.php inc/ bin/"
+      "vendor/bin/pint"
     ],
-		"localize": [
-			"wp-pot -s \"**/*.php\" -o languages/pressbooks-plugin-scaffold.pot -p \"Pressbooks\" -t \"Pressbooks (Book Oven Inc.) <code@pressbooks.com>\"",
-			"bash bin/i18n.sh"
-		]
+    "standards": [
+      "vendor/bin/pint --test"
+    ]
 	}
 }
