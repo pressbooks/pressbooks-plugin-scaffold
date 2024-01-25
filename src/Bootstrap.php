@@ -60,7 +60,7 @@ final class Bootstrap
         add_action('wp_enqueue_scripts', function () use ($handle) {
             Vite\enqueue_asset(
                 plugin_dir_path(__DIR__).'dist',
-                'resources/assets/js/pressbooks-plugin-scaffoold.js',
+                'resources/assets/js/pressbooks-plugin-scaffold.js',
                 ['handle' => $handle]
             );
         });
