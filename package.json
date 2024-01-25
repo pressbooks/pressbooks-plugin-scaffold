@@ -22,8 +22,6 @@
   "homepage": "https://github.com/pressbooks/pressbooks-plugin-scaffold#readme",
   "devDependencies": {
     "@kucrut/vite-for-wp": "^0.5.2",
-    "cross-env": "^7.0.3",
-    "eslint": "^8.52.0",
-    "sass": "^1.69.5"
+    "cross-env": "^7.0.3"
   }
 }
