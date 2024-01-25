@@ -2,7 +2,7 @@
   "name": "pressbooks-plugin-scaffold",
   "version": "1.0.0",
   "description": "",
-  "main": "resources/assets/js/app.js",
+  "main": "resources/assets/js/pressbooks-plugin-scaffold.js",
   "scripts": {
     "build": "vite build",
     "dev": "vite"
