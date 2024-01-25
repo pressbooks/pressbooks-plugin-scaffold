@@ -18,12 +18,11 @@
     "source": "https://github.com/pressbooks/pressbooks-plugin-scaffold/"
   },
   "config": {
-    "allow-plugins": {
-      "composer/installers": true,
-      "dealerdirect/phpcodesniffer-composer-installer": true
-    },
     "preferred-install": {
       "pressbooks/pressbooks": "source"
+    },
+    "allow-plugins": {
+      "composer/installers": true
     }
   },
   "autoload": {
