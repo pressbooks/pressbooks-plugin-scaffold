@@ -1,6 +1,6 @@
 # Pressbooks Plugin Scaffold
 
-**Contributors:** conner_bw, greatislander, steelwagstaff \
+**Contributors:** conner_bw, greatislander, steelwagstaff, arzola, fdalcin \
 **Tags:** pressbooks, plugin, scaffolding \
 **Requires at least:** 6.2 \
 **Tested up to:** 6.2 \
@@ -40,33 +40,35 @@ Configure Transifex project and localization (instructions to come).
 
 # Helpful Commands
 
-`composer standards`: check PHP coding standards with PHP_CodeSniffer
+`composer standards`: check PHP coding standards with Laravel Pint
+`composer fix`: fix PHP coding standards with Laravel Pint
 `composer test`: run unit tests with PHPUnit
 `composer readme`: generate a Markdown readme from readme.txt
-`composer localize`: update localization files (requires Transifex to be configured)
-`npm run test`: check SCSS/ES6 with StyleLint and ESLint
+`npm run dev`:  build assets for development
 `npm run build`: build assets for distribution
+
+## Directory Structure
+
+### Controllers
+
+Controllers are responsible for handling requests and returning responses. They are located in the `src/Controllers` directory.
+
+### Database
+
+Database migrations are located in the `src/Database/Migrations` directory.
+
+### Views
+
+Composed Views like WP_List_Table are located in the `src/Views` directory.
+
+Blade templates are located in the `resources/views/{namespace}` directory.
+
+### Models
+
+Models are located in the `src/Models` directory.
 
 ## Changelog
 
-### 0.5.0
+### 0.6.0
 #### Upgrade Notice
-Pressbooks Plugin Scaffold 0.5.0 requires PHP 8.1, Pressbooks >= 6.9.3, and WordPress >= 6.2.
-
-### 0.4.0
-**Major Changes**
-- Add support for Composer 2
-- Add GitHub Actions for linting and testing
-- Add Dependabot config
-- Update Dependencies
-
-### 0.2.0
-
-**Major Changes**
-- A new feature.
-
-**Minor Changes**
-- A backwards-compatible change.
-
-**Patches**
-- A bug fix.
+Pressbooks Plugin Scaffold 0.6.0 requires PHP 8.1, Pressbooks >= 6.16.0, and WordPress >= 6.4
