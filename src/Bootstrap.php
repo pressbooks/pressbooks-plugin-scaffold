@@ -26,6 +26,7 @@ final class Bootstrap
     {
         $this->registerActions();
         $this->registerBlade();
+        $this->fixSymlinks();
     }
 
     public function registerMenus(): void
@@ -64,5 +65,28 @@ final class Bootstrap
                 ['handle' => $handle]
             );
         });
+    }
+
+    /**
+     * This is a hack to fix the symlinks in the generated script tags meanwhile we found a better way to enqueue Vite assets
+     * plugin_dir_path(__DIR__).'dist'
+     * @return void
+     */
+    private function fixSymlinks(): void
+    {
+        add_filter('script_loader_src', function ($src, $handle) {
+            if ($handle === 'pressbooks-plugin-scaffold') {
+                $src = preg_replace('|/app/srv/www/bedrocks/[^/]+/releases/\d+/web/|', '/', $src);
+            }
+            // If the handle doesn't match, return the original $src
+            return $src;
+        }, 10, 2);
+        add_filter('style_loader_src', function ($src, $handle) {
+            if (str_starts_with($handle, 'pressbooks-plugin-scaffold')) {
+                $src = preg_replace('|/app/srv/www/bedrocks/[^/]+/releases/\d+/web/|', '/', $src);
+            }
+            // If the handle or conditions don't match, return the original $src
+            return $src;
+        }, 10, 2);
     }
 }
