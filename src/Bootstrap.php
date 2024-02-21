@@ -3,7 +3,6 @@
 namespace PressbooksPluginScaffold;
 
 use Pressbooks\Container;
-use PressbooksPluginScaffold\Controllers\DemoController;
 
 /**
  * Class Bootstrap
