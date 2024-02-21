@@ -3,6 +3,7 @@
 namespace PressbooksPluginScaffold;
 
 use Pressbooks\Container;
+use PressbooksPluginScaffold\Controllers\DemoController;
 
 /**
  * Class Bootstrap
@@ -26,12 +27,12 @@ final class Bootstrap
     {
         $this->registerActions();
         $this->registerBlade();
+        $this->enqueueScripts();
     }
 
     public function registerMenus(): void
     {
         //TODO: Register menus here.
-        add_action('network_admin_menu', [$this, 'registerMenus'], 11);
     }
 
     private function registerActions(): void
@@ -49,7 +50,7 @@ final class Bootstrap
 
     private function registerServices(): void
     {
-        Container::getInstance()->bind(DemoController::class, fn () => new DemoController);
+        //TODO: Register services here.
     }
 
     private function enqueueScripts(): void
@@ -59,7 +60,7 @@ final class Bootstrap
 
         add_action('wp_enqueue_scripts', function () use ($handle) {
             Vite\enqueue_asset(
-                plugin_dir_path(__DIR__).'dist',
+                WP_PLUGIN_DIR . '/pressbooks-plugin-scaffold/dist',
                 'resources/assets/js/pressbooks-plugin-scaffold.js',
                 ['handle' => $handle]
             );
