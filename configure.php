@@ -63,7 +63,7 @@ function getReplaceableFiles(): array
 {
     $namedFiles = explode(PHP_EOL, run('find ./* -name "pressbooks-plugin-scaffold*"'));
 
-    $contentFiles = explode(PHP_EOL, run('grep -E -r -l -i "PressbooksPluginScaffold|pressbooks-plugin-scaffold" --exclude-dir=vendor ./* ./.github/* | grep -v '.basename(__FILE__)));
+    $contentFiles = explode(PHP_EOL, run('grep -E -r -l -i "PressbooksPluginScaffold|pressbooks-plugin-scaffold|Pressbooks Plugin Scaffold" --exclude-dir=vendor ./* ./.github/* | grep -v '.basename(__FILE__)));
 
     return array_unique(
         array_merge($namedFiles, $contentFiles)
@@ -75,15 +75,16 @@ $currentDirectory = getcwd();
 
 $pluginName = ask('Plugin name', basename($currentDirectory));
 
-$snakeCaseName = slugify($pluginName);
+$kebabCaseName = slugify($pluginName);
 $titleCaseName = ask('Namespace name', titleCase($pluginName));
-$description = ask('Plugin description', "This is my plugin {$snakeCaseName}");
+$description = ask('Plugin description', "This is my plugin {$kebabCaseName}");
 
 writeln('------');
-writeln("Plugin         : {$snakeCaseName} <{$description}>");
+writeln("Name           : {$pluginName}");
+writeln("Plugin         : {$kebabCaseName} <{$description}>");
 writeln("Namespace      : Pressbooks\\{$titleCaseName}");
 writeln("Class name     : {$titleCaseName}");
-writeln("Root file name : {$snakeCaseName}");
+writeln("Root file name : {$kebabCaseName}");
 writeln('------');
 
 writeln('This script will replace the above values in all relevant files in the project directory.');
@@ -96,15 +97,16 @@ $files = getReplaceableFiles();
 
 foreach ($files as $file) {
     replaceInFile($file, [
-        'pressbooks-plugin-scaffold' => $snakeCaseName,
+        'pressbooks-plugin-scaffold' => $kebabCaseName,
         'PressbooksPluginScaffold' => $titleCaseName,
+        'Pressbooks Plugin Scaffold' => $pluginName,
         'A scaffold for Pressbooks plugins.' => $description,
     ]);
 
     match (true) {
-        str_contains($file, separator('resources/assets/js/pressbooks-plugin-scaffold.js')) => rename($file, separator('./resources/assets/js/' . $snakeCaseName . '.js')),
-        str_contains($file, separator('resources/assets/css/pressbooks-plugin-scaffold.css')) => rename($file, separator('./resources/assets/css/' . $snakeCaseName . '.css')),
-        str_contains($file, separator('pressbooks-plugin-scaffold.php')) => rename($file, separator('./' . $snakeCaseName . '.php')),
+        str_contains($file, separator('resources/assets/js/pressbooks-plugin-scaffold.js')) => rename($file, separator('./resources/assets/js/' . $kebabCaseName . '.js')),
+        str_contains($file, separator('resources/assets/css/pressbooks-plugin-scaffold.css')) => rename($file, separator('./resources/assets/css/' . $kebabCaseName . '.css')),
+        str_contains($file, separator('pressbooks-plugin-scaffold.php')) => rename($file, separator('./' . $kebabCaseName . '.php')),
         default => null,
     };
 }
