@@ -105,12 +105,9 @@ foreach ($files as $file) {
         'A scaffold for Pressbooks plugins.' => $description,
     ]);
 
-    match (true) {
-        str_contains($file, separator('resources/assets/js/pressbooks-plugin-scaffold.js')) => rename($file, separator('./resources/assets/js/' . $kebabCaseName . '.js')),
-        str_contains($file, separator('resources/assets/css/pressbooks-plugin-scaffold.css')) => rename($file, separator('./resources/assets/css/' . $kebabCaseName . '.css')),
-        str_contains($file, separator('pressbooks-plugin-scaffold.php')) => rename($file, separator('./' . $kebabCaseName . '.php')),
-        default => null,
-    };
+    if (str_contains($file, 'pressbooks-plugin-scaffold')) {
+        rename($file, str_replace('pressbooks-plugin-scaffold', $kebabCaseName, $file));
+    }
 }
 
 confirm('Execute `composer install` & `npm install`?') && run('composer install & npm install');
