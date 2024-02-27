@@ -33,9 +33,11 @@ function slugify(string $subject): string
     return strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $subject), '-'));
 }
 
-function titleCase(string $subject): string
+function titleCase(string $subject, bool $removeSpaces = false): string
 {
-    return str_replace(' ', '', ucwords(str_replace(['-', '_'], ' ', $subject)));
+    $value = ucwords(str_replace(['-', '_'], ' ', $subject));
+
+    return $removeSpaces ? str_replace(' ', '', $value) : $value;
 }
 
 function replaceInFile(string $file, array $replacements): void
@@ -73,18 +75,18 @@ function getReplaceableFiles(): array
 // --------------- SCRIPT START --------------- //
 $currentDirectory = getcwd();
 
-$pluginName = ask('Plugin name', basename($currentDirectory));
+$pluginName = ask('Plugin name', titleCase(basename($currentDirectory), removeSpaces: false));
 
 $kebabCaseName = slugify($pluginName);
-$titleCaseName = ask('Namespace name', titleCase($pluginName));
+$titleCaseName = ask('Namespace name', titleCase($pluginName, removeSpaces: true));
 $description = ask('Plugin description', "This is my plugin {$kebabCaseName}");
 
 writeln('------');
-writeln("Name           : {$pluginName}");
-writeln("Plugin         : {$kebabCaseName} <{$description}>");
-writeln("Namespace      : Pressbooks\\{$titleCaseName}");
-writeln("Class name     : {$titleCaseName}");
-writeln("Root file name : {$kebabCaseName}");
+writeln("Plugin name     : {$pluginName}");
+writeln("Plugin          : {$kebabCaseName} <{$description}>");
+writeln("Namespace       : Pressbooks\\{$titleCaseName}");
+writeln("Classname       : {$titleCaseName}");
+writeln("Root file name  : {$kebabCaseName}");
 writeln('------');
 
 writeln('This script will replace the above values in all relevant files in the project directory.');
