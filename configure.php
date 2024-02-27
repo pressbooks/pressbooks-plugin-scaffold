@@ -113,7 +113,7 @@ foreach ($files as $file) {
     };
 }
 
-confirm('Execute `composer install`?') && run('composer install');
+confirm('Execute `composer install` & `npm install`?') && run('composer install & npm install');
 
 confirm('Let this script delete itself?', true) && unlink(__FILE__);
 
