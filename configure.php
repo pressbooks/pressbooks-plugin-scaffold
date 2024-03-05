@@ -101,7 +101,9 @@ foreach ($files as $file) {
     if (str_contains($file, 'README.md')) {
         $contents = file_get_contents($file);
 
-        file_put_contents($file, <<<TEXT
+        file_put_contents(
+            $file,
+            <<<TEXT
 # {$pluginName}
 
 {$description}
