@@ -98,12 +98,24 @@ if (! confirm('Modify files?', true)) {
 $files = getReplaceableFiles();
 
 foreach ($files as $file) {
-    replaceInFile($file, [
-        'pressbooks-plugin-scaffold' => $kebabCaseName,
-        'PressbooksPluginScaffold' => $titleCaseName,
-        'Pressbooks Plugin Scaffold' => $pluginName,
-        'A scaffold for Pressbooks plugins.' => $description,
-    ]);
+    if (str_contains($file, 'README.md')) {
+        $contents = file_get_contents($file);
+
+        file_put_contents($file, <<<TEXT
+# {$pluginName}
+
+{$description}
+
+TEXT
+        );
+    } else {
+        replaceInFile($file, [
+            'pressbooks-plugin-scaffold' => $kebabCaseName,
+            'PressbooksPluginScaffold' => $titleCaseName,
+            'Pressbooks Plugin Scaffold' => $pluginName,
+            'A scaffold for Pressbooks plugins.' => $description,
+        ]);
+    }
 
     if (str_contains($file, 'pressbooks-plugin-scaffold')) {
         rename($file, str_replace('pressbooks-plugin-scaffold', $kebabCaseName, $file));

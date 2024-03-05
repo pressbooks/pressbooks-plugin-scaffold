@@ -22,15 +22,7 @@ Run `composer create-project pressbooks/pressbooks-plugin-scaffold <your-plugin-
 
 Uncomment lines 34-43 of `pressbooks-plugin-scaffold.php` to enable Composer autoloader (you'll need to require a class to test for first).
 
-Replace `pressbooks/pressbooks-plugin-scaffold` with `<your-github-username>/<your-plugin-slug>` throughout the project.
-
-Replace `pressbooks-plugin-scaffold` with `<your-plugin-slug>` throughout the project (renaming files as needed).
-
-Replace `PressbooksPluginScaffold` with `<YourNamespace>` throughout the project.
-
-Run `npm install` to install dependencies.
-
-Update readme.txt to reflect your plugin's name and description and run `composer readme` to generate an updated readme.md file.
+Run `php configure.php` script to set up your newly created plugin. This will replace all `pressbooks-plugin-scaffold` and its variants throughout all the files.
 
 # Optional Steps
 
@@ -40,11 +32,11 @@ Configure Transifex project and localization (instructions to come).
 
 # Helpful Commands
 
-`composer standards`: check PHP coding standards with Laravel Pint
-`composer fix`: fix PHP coding standards with Laravel Pint
-`composer test`: run unit tests with PHPUnit
-`composer readme`: generate a Markdown readme from readme.txt
-`npm run dev`:  build assets for development
+`composer standards`: check PHP coding standards with Laravel Pint \
+`composer fix`: fix PHP coding standards with Laravel Pint \
+`composer test`: run unit tests with PHPUnit \
+`composer readme`: generate a Markdown readme from readme.txt \
+`npm run dev`:  build assets for development \
 `npm run build`: build assets for distribution
 
 ## Directory Structure
