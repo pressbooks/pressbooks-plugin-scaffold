@@ -2,9 +2,9 @@
 
 **Contributors:** conner_bw, greatislander, steelwagstaff, arzola, fdalcin \
 **Tags:** pressbooks, plugin, scaffolding \
-**Requires at least:** 6.2 \
-**Tested up to:** 6.2 \
-**Stable tag:** 0.5.0-dev \
+**Requires at least:** 6.5 \
+**Tested up to:** 6.5 \
+**Stable tag:** 0.6.0 \
 **License:** GPLv3 or later \
 **License URI:** https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -16,21 +16,19 @@ This is not a plugin, but a tool that helps you scaffold a plugin.
 
 ## Installation
 
-# Create Plugin
+### Create Plugin
 
 Run `composer create-project pressbooks/pressbooks-plugin-scaffold <your-plugin-slug>`.
 
-Uncomment lines 34-43 of `pressbooks-plugin-scaffold.php` to enable Composer autoloader (you'll need to require a class to test for first).
-
 Run `php configure.php` script to set up your newly created plugin. This will replace all `pressbooks-plugin-scaffold` and its variants throughout all the files.
 
-# Optional Steps
+### Optional Steps
 
 Configure GitHub Action deploys (instructions to come).
 
 Configure Transifex project and localization (instructions to come).
 
-# Helpful Commands
+### Helpful Commands
 
 `composer standards`: check PHP coding standards with Laravel Pint \
 `composer fix`: fix PHP coding standards with Laravel Pint \
@@ -62,5 +60,7 @@ Models are located in the `src/Models` directory.
 ## Changelog
 
 ### 0.6.0
+
 #### Upgrade Notice
-Pressbooks Plugin Scaffold 0.6.0 requires PHP 8.1, Pressbooks >= 6.16.0, and WordPress >= 6.4
+
+Pressbooks Plugin Scaffold 0.6.0 requires PHP 8.1, Pressbooks >= 6.16.0, and WordPress >= 6.5

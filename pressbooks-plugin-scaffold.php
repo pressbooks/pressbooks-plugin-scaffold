@@ -2,6 +2,8 @@
 /**
  * Plugin Name: Pressbooks Plugin Scaffold
  * Plugin URI: https://pressbooks.org
+ * Requires at least: 6.5
+ * Requires Plugins: pressbooks
  * Description: A scaffold for Pressbooks plugins.
  * Version: 0.0.1
  * Author: Pressbooks (Book Oven Inc.)
@@ -15,21 +17,6 @@
 
 use PressbooksPluginScaffold\Bootstrap;
 use PressbooksPluginScaffold\Database\Migration;
-
-// TODO: Check if this is the best way to check for Pressbooks.
-if (!class_exists('Pressbooks\Book')) {
-    if (file_exists(__DIR__.'/vendor/autoload.php')) {
-        require_once __DIR__.'/vendor/autoload.php';
-    } else {
-        $title = __('Missing dependencies', 'PressbooksPluginScaffold');
-        $body = __(
-            'Please run <code>composer install</code> from the root of the plugin directory.',
-            'pressbooks-plugin-scaffold'
-        );
-
-        wp_die("<h1>{$title}</h1><p>{$body}</p>");
-    }
-}
 
 register_activation_hook(__FILE__, [Migration::class, 'migrate']);
 
