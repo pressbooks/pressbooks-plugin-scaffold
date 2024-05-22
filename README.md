@@ -4,7 +4,9 @@
 **Tags:** pressbooks, plugin, scaffolding \
 **Requires at least:** 6.5 \
 **Tested up to:** 6.5 \
+<!-- x-release-please-start-version -->
 **Stable tag:** 0.6.0 \
+<!-- x-release-please-end -->
 **License:** GPLv3 or later \
 **License URI:** https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -57,10 +59,5 @@ Blade templates are located in the `resources/views/{namespace}` directory.
 
 Models are located in the `src/Models` directory.
 
-## Changelog
-
-### 0.6.0
-
-#### Upgrade Notice
-
-Pressbooks Plugin Scaffold 0.6.0 requires PHP 8.1, Pressbooks >= 6.16.0, and WordPress >= 6.5
+### Changelog
+Please see the [CHANGELOG](CHANGELOG.md) file for more information.
