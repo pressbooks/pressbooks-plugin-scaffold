@@ -1,5 +1,12 @@
-import create_config from '@kucrut/vite-for-wp';
+import { v4wp } from '@kucrut/vite-for-wp';
 
-export default create_config( {
-	app: 'resources/assets/js/pressbooks-plugin-scaffold.js',
-}, 'dist' );
+export default {
+	plugins: [
+		v4wp({
+			input: {
+				app: 'resources/assets/js/pressbooks-plugin-scaffold.js'
+			},
+			outDir: 'dist',
+		})
+	],
+}
