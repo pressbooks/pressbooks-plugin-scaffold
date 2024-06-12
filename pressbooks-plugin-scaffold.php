@@ -6,7 +6,7 @@
  * Requires Plugins: pressbooks
  * Description: A scaffold for Pressbooks plugins.
  * x-release-please-start-version
- * Version: 0.0.1
+ * Version: 0.1.0
  * x-release-please-end
  * Author: Pressbooks (Book Oven Inc.)
  * Author URI: https://pressbooks.org
