@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/pressbooks/pressbooks-plugin-scaffold#readme",
   "devDependencies": {
-    "@kucrut/vite-for-wp": "^0.8.0",
+    "@kucrut/vite-for-wp": "^0.9.1",
     "cross-env": "^7.0.3"
   }
 }
