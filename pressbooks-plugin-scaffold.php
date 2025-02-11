@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name: Pressbooks Plugin Scaffold
  * Plugin URI: https://pressbooks.org
