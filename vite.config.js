@@ -1,12 +1,9 @@
-import { v4wp } from '@kucrut/vite-for-wp';
+import { createWpViteConfig } from 'pressbooks-build-tools';
+import { resolve } from 'path';
 
-export default {
-	plugins: [
-		v4wp({
-			input: {
-				app: 'resources/assets/js/pressbooks-plugin-scaffold.js'
-			},
-			outDir: 'dist',
-		})
-	],
-}
+export default createWpViteConfig({
+	input: {
+		app: resolve(__dirname, 'resources/assets/js/pressbooks-plugin-scaffold.js'),
+	},
+	outDir: 'assets/dist',
+});
