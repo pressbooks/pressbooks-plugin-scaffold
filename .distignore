@@ -1,6 +1,5 @@
 .git
 .idea
-.tx
 assets/src
 bin
 node_modules
@@ -10,10 +9,9 @@ tests
 .gitattributes
 .gitignore
 .phpstorm.meta.php
-.travis.yml
 codecov.yml
 coverage.xml
-phpcs.ruleset.xml
 phpunit.xml
-webpack.mix.js
-yarn.lock
+package.json
+package-lock.json
+vite.config.js

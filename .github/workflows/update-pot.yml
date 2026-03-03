@@ -14,7 +14,7 @@ jobs:
     uses: pressbooks/reusable-workflows/.github/workflows/update-pot.yml@main
     secrets: inherit
     with:
-      domain: "<domain>"
-      slug: "<domain>"
-      package_name: "<domain-package>"
-      headers: '{"Report-Msgid-Bugs-To": "https://github.com/pressbooks/<domain>/issues"}'
+      domain: 'pressbooks-plugin-scaffold'
+      slug: 'pressbooks-plugin-scaffold'
+      package_name: 'Pressbooks Plugin Scaffold'
+      headers: '{"Report-Msgid-Bugs-To": "https://github.com/pressbooks/pressbooks-plugin-scaffold/issues"}'
